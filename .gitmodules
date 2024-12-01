@@ -1,0 +1,4 @@
+[submodule "monitor"]
+	path = monitor
+	url = https://github.com/SofiViale/monitor.git
+	branch = main

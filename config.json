@@ -1,0 +1,11 @@
+{
+	"metrics":	{
+		"cpu_usage":	true,
+		"memory_usage":	true,
+		"disk_io":	true,
+		"network_stats":	true,
+		"process_count":	true,
+		"context_switches":	true
+	},
+	"interval":	1
+}
