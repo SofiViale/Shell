@@ -29,17 +29,17 @@ endif()
 execute_process(COMMAND make all
                 WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/monitor)
 
-add_executable(${PROJECT_NAME} src/commands.c src/monitor.c src/pipe.c src/main.c)
+add_executable(${PROJECT_NAME} src/commands.c src/monitor.c src/pipe.c src/list_files.c src/main.c)
 target_link_libraries(${PROJECT_NAME} PRIVATE cjson::cjson unity::unity)
 
 if(RUN_COVERAGE EQUAL 1)
     message("Run with coverage")
 endif()
 
-add_executable(test_commands test/test_commands.c src/commands.c src/monitor.c src/pipe.c)
+add_executable(test_commands test/test_commands.c src/commands.c src/monitor.c src/pipe.c src/list_files.c)
 target_link_libraries(test_commands PRIVATE unity::unity cjson::cjson)
 add_test(NAME test_commands COMMAND test_commands)
 
-add_executable(test_monitor test/test_monitor.c src/commands.c src/monitor.c src/pipe.c)
+add_executable(test_monitor test/test_monitor.c src/commands.c src/monitor.c src/pipe.c src/list_files.c)
 target_link_libraries(test_monitor PRIVATE unity::unity cjson::cjson)
 add_test(NAME test_monitor COMMAND test_monitor)

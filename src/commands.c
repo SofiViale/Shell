@@ -1,5 +1,6 @@
 #include "../include/commands.h"
 #include "../include/monitor.h"
+#include "../include/list_files.h" // Asegúrate de incluir el encabezado correspondiente
 #include <ctype.h>
 #include <fcntl.h>
 #include <linux/limits.h>
@@ -218,6 +219,36 @@ void execute_command(char* input)
     else if (strcmp(input, "clr") == 0)
     {
         clear_screen();
+        return;
+    }
+    else if (strncmp(input, "list_config", 11) == 0)
+    {
+        // Extraer el directorio y la extensión del comando
+        char* dir_path = strtok(input + 12, " ");
+        char* file_extension = strtok(NULL, " ");
+        if (dir_path && file_extension)
+        {
+            list_config_files(dir_path, file_extension);
+        }
+        else
+        {
+            fprintf(stderr, "Uso: list_config <directorio> <extensión>\n");
+        }
+        return;
+    }
+    else if (strncmp(input, "search_and_read_config", 22) == 0)
+    {
+        // Extraer el directorio y la extensión del comando
+        char* dir_path = strtok(input + 23, " ");
+        char* file_extension = strtok(NULL, " ");
+        if (dir_path && file_extension)
+        {
+            search_and_read_config_files(dir_path, file_extension);
+        }
+        else
+        {
+            fprintf(stderr, "Uso: search_and_read_config <directorio> <extensión>\n");
+        }
         return;
     }
 
